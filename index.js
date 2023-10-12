@@ -1,12 +1,13 @@
 // index.js will run the application using imports from lib/
 const inquirer = require('inquirer');
+const fs = require('fs');
 const {Circle, Square, Triangle} = require("./lib/shapes");
+const path = require('path');
 
-
-inquirer.prompt([
+const questions = ([
     {
         type: 'input',
-        name: "letters",
+        name: "text",
         message: "What would you like to write in your logo? Enter up to three characters."
     }, {
         type: 'input',
@@ -26,6 +27,35 @@ inquirer.prompt([
         name: "shapeColor",
         message: "What color would you like your shape to be? Please enter a color keyword or a hexidecimal number."
     }
-]).then((answers) => {
+])
 
-})
+function generateSVG(text, textColor, shape, shapeColor) {
+    let logo;
+
+    if (shape === "Circle") {
+        logo = new Circle()
+    } else if (shape === "Square") {
+        logo = new Square()
+    } else if (shape === "Triangle") {
+        logo = new Triangle()
+    }
+
+    logo.setColor(shapeColor)
+
+    return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        <text x="150" y="100" fill="${textColor}">${text}</text>
+        ${logo.render()}
+    </svg>`
+}
+
+function writeToFile(fileName, data) {
+    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+}
+
+const init = () => {
+    inquirer.prompt(questions).then((data) => {
+        writeToFile("logo.svg", generateSVG(data.text, data.textColor, data.shape, data.shapeColor));
+    })
+}
+
+init();
