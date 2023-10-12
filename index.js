@@ -1,17 +1,16 @@
 // index.js will run the application using imports from lib/
 const inquirer = require('inquirer');
-const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown');
-const path = require('path');
+const {Circle, Square, Triangle} = require("./lib/shapes");
+
 
 inquirer.prompt([
     {
         type: 'input',
         name: "letters",
-        message: "What would you like to write in your logo?"
+        message: "What would you like to write in your logo? Enter up to three characters."
     }, {
         type: 'input',
-        name: "text color",
+        name: "textColor",
         message: "What color would you like your text to be? Please enter a color keyword or a hexidecimal number."
     }, {
         type: 'list',
@@ -24,9 +23,9 @@ inquirer.prompt([
         ]
     }, {
         type: 'input',
-        name: "shape color",
+        name: "shapeColor",
         message: "What color would you like your shape to be? Please enter a color keyword or a hexidecimal number."
     }
 ]).then((answers) => {
-    
+
 })
