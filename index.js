@@ -29,7 +29,7 @@ const questions = ([
     }
 ])
 
-function generateSVG(text, textColor, shape, shapeColor) {
+function generateSVG(shape, shapeColor, text, textColor) {
     let logo;
 
     if (shape === "Circle") {
@@ -43,8 +43,8 @@ function generateSVG(text, textColor, shape, shapeColor) {
     logo.setColor(shapeColor)
 
     return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-        <text x="100" y="100" fill="${textColor}">${text}</text>
         ${logo.render()}
+        <text x="100" y="100" fill="${textColor}">${text}</text>
     </svg>`
 }
 
@@ -54,7 +54,7 @@ function writeToFile(fileName, data) {
 
 const init = () => {
     inquirer.prompt(questions).then((data) => {
-        writeToFile("logo.svg", generateSVG(data.text, data.textColor, data.shape, data.shapeColor));
+        writeToFile("logo.svg", generateSVG(data.shape, data.shapeColor, data.text, data.textColor));
     })
 }
 
