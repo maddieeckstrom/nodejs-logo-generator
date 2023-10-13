@@ -62,3 +62,6 @@ const init = () => {
 
 // calling the function here
 init();
+
+//where do I write the console log below so that it generates after I answer the question prompts?
+//console.log("Generated SVG logo")
