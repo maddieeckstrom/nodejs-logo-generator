@@ -1,9 +1,9 @@
-// index.js will run the application using imports from lib/
 const inquirer = require('inquirer');
 const fs = require('fs');
 const {Circle, Square, Triangle} = require("./lib/shapes");
 const path = require('path');
 
+// an array of all the questions which will be asked in the terminal
 const questions = ([
     {
         type: 'input',
@@ -29,6 +29,7 @@ const questions = ([
     }
 ])
 
+//function which generates the logo
 function generateSVG(shape, shapeColor, text, textColor) {
     let logo;
 
@@ -52,10 +53,12 @@ function writeToFile(fileName, data) {
     return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
 
+// function which takes the data from the four arguments passed in generateSVG and applies it to our writeToFile function to generate logo in SVG file
 const init = () => {
     inquirer.prompt(questions).then((data) => {
         writeToFile("logo.svg", generateSVG(data.shape, data.shapeColor, data.text, data.textColor));
     })
 }
 
+// calling the function here
 init();
