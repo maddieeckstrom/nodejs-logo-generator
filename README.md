@@ -24,7 +24,7 @@ To use, run the command "node index.js" in the terminal. Answer the questions as
 ![logo-square](./images/logo-square.png)
 ![logo-triangle](./images/logo-triangle.png)
 
-Link to my demonstration video: REMEMBER TO PUT VIDEO HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Link to my demonstration video: https://drive.google.com/file/d/140vPPZHrSVypjVFw-4Rt_-ctBRZO4C6s/view 
 
 
 ## Credits
