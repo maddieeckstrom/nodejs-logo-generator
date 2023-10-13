@@ -57,11 +57,9 @@ function writeToFile(fileName, data) {
 const init = () => {
     inquirer.prompt(questions).then((data) => {
         writeToFile("logo.svg", generateSVG(data.shape, data.shapeColor, data.text, data.textColor));
+        console.log("Generated SVG logo");
     })
 }
 
 // calling the function here
 init();
-
-//where do I write the console log below so that it generates after I answer the question prompts?
-//console.log("Generated SVG logo")
